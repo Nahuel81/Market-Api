@@ -28,8 +28,18 @@ public class Producto {
   @JoinColumn(name = "idCategoria", insertable= false, updatable = false)
   private Categoria categoria;
   
+
+   
+
+    //Getter and Setter
     
-  //Getter and Setter
+     public Categoria getCategoria() {
+        return categoria;  
+    }
+    
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Integer getId() {
         return id;
