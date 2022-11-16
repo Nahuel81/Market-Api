@@ -19,6 +19,9 @@ public class Product {
     private Category category;
     
     
+    
+    
+    
     //Getter and Setter
 
     public int getProductId() {

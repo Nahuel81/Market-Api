@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.back.market.persistance.entity;
 
 import java.time.LocalDateTime;
@@ -15,7 +12,7 @@ public class Compra {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCompra;
     
-    private Integer idCliente;
+    private String idCliente;
     private LocalDateTime fecha;
     private String medioPago;
     private String comentario;
@@ -25,7 +22,7 @@ public class Compra {
     @JoinColumn(name="idCliente", insertable=false, updatable=false)
     private Cliente cliente;
     
-    @OneToMany(mappedBy="producto")
+    @OneToMany(mappedBy="compra", cascade={CascadeType.ALL})
     private List<ComprasProducto>productos;
     
   //Getter and Setter
@@ -38,14 +35,15 @@ public class Compra {
         this.idCompra = idCompra;
     }
 
-    public Integer getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Integer idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
+   
     public LocalDateTime getFecha() {
         return fecha;
     }
@@ -84,6 +82,14 @@ public class Compra {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<ComprasProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ComprasProducto> productos) {
+        this.productos = productos;
     }
     
     

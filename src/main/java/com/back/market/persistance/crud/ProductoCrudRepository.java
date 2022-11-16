@@ -12,6 +12,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
     
-    public List<Producto>findByIdCategoriaOrderByAsc(int idCategoria);
+    List<Producto> findByIdCategoriaOrderByNombreProductoAsc(int idCategoria);
     Optional<List<Producto>>findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);
 }
