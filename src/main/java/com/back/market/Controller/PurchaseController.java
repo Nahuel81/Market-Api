@@ -3,6 +3,7 @@ package com.back.market.Controller;
 
 import com.back.market.domain.Purchase;
 import com.back.market.domain.service.PurchaseService;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
     
-    @GetMapping("/all")
+    @GetMapping("/all") //optional
+    @ApiOperation("Obtener todas las compras")
     public ResponseEntity<List<Purchase>> getAll(){
     return new ResponseEntity<>(purchaseService.getALL(),HttpStatus.OK);
     }
     
     @GetMapping("/cliente/{idClient}")
+    @ApiOperation("Obtener todas las compras de un solo cliente por su ID")
     public ResponseEntity <List<Purchase>> getByClient(@PathVariable("idClient") String clientId){
     return purchaseService.getByClient(clientId)
     .map(purchases-> new ResponseEntity<>(purchases, HttpStatus.OK))
@@ -35,6 +38,8 @@ public class PurchaseController {
     }
     
     @PostMapping
+    @ApiOperation("Realizar una compra. Nota:(se nececita el ID CLIENTE, puede obtenerlo ejecutando el metodo obtener todas las compras y copiando el ID del cliente. "
+            + "el purchaseID debe quedar en cero, se asigna automaticamente)")
     public ResponseEntity<Purchase> save(@RequestBody Purchase purchase){
     return new ResponseEntity<>(purchaseService.save(purchase), HttpStatus.CREATED);
     }

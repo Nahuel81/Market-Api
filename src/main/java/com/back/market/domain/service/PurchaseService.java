@@ -16,7 +16,7 @@ public class PurchaseService {
    @Autowired
    PurchaseRepository purchaseRepository;
    
-   public List<Purchase> getALL(){
+   public List<Purchase> getALL(){ //optional
    return purchaseRepository.getAll();
    }
    

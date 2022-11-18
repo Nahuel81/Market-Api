@@ -21,7 +21,8 @@ public class ComprasRepository implements PurchaseRepository {
     
     @Override
     public List<Purchase> getAll() {
-       return mapper.toPurchases((List<Compra>) comprasRepository.findAll());
+       return mapper.toPurchases((List<Compra>)
+               comprasRepository.findAll());
     }
 
     @Override

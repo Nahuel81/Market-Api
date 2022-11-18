@@ -1,13 +1,14 @@
 
 package com.back.market.persistance.entity;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
-public class Compra {
+public class Compra{
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCompra;
