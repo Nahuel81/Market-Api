@@ -12,6 +12,6 @@ public class MarketUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
-        return new User("usuario", "{noop}contraseña", new ArrayList<>());
+        return new User("usuario", "{noop}market", new ArrayList<>());
     }
 }
