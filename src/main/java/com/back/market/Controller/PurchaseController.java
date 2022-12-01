@@ -24,13 +24,13 @@ public class PurchaseController {
     private PurchaseService purchaseService;
     
     @GetMapping("/all") //optional
-    @ApiOperation("Obtener todas las compras")
+    @ApiOperation("Obtener todas las compras") //orientacion de swagger
     public ResponseEntity<List<Purchase>> getAll(){
     return new ResponseEntity<>(purchaseService.getALL(),HttpStatus.OK);
     }
     
     @GetMapping("/cliente/{idClient}")
-    @ApiOperation("Obtener todas las compras de un solo cliente por su ID")
+    @ApiOperation("Obtener todas las compras de un solo cliente por su ID") //orientacion de swagger
     public ResponseEntity <List<Purchase>> getByClient(@PathVariable("idClient") String clientId){
     return purchaseService.getByClient(clientId)
     .map(purchases-> new ResponseEntity<>(purchases, HttpStatus.OK))
@@ -39,7 +39,7 @@ public class PurchaseController {
     
     @PostMapping
     @ApiOperation("Realizar una compra. Nota:(se nececita el ID CLIENTE, puede obtenerlo ejecutando el metodo obtener todas las compras y copiando el ID del cliente. "
-            + "el purchaseID debe quedar en cero, se asigna automaticamente)")
+            + "el purchaseID debe quedar en cero, se asigna automaticamente)") //orientacion de swagger
     public ResponseEntity<Purchase> save(@RequestBody Purchase purchase){
     return new ResponseEntity<>(purchaseService.save(purchase), HttpStatus.CREATED);
     }
